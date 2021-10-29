@@ -22,6 +22,9 @@
   "scripts": {
     "cs-fixer": [
       "@php ./vendor/bin/php-cs-fixer fix"
+    ],
+    "header-stamp": [
+      "@php ./vendor/bin/header-stamp --exclude=\"vendor,translations\" --extensions=php --license=vendor/prestashop/header-stamp/assets/afl.txt"
     ]
   }
 }
