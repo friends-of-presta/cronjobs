@@ -32,6 +32,11 @@ class AdminCronJobsController extends ModuleAdminController
         exit;
     }
 
+    /**
+     * @return bool|ObjectModel|void
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     */
     public function postProcess()
     {
         $this->module->sendCallback();
@@ -44,6 +49,11 @@ class AdminCronJobsController extends ModuleAdminController
         ob_end_clean();
     }
 
+    /**
+     * @return void
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     */
     protected function runModulesCrons()
     {
         $query = 'SELECT * FROM ' . _DB_PREFIX_ . bqSQL($this->module->name) . ' WHERE `active` = 1 AND `id_module` IS NOT NULL';
@@ -72,6 +82,10 @@ class AdminCronJobsController extends ModuleAdminController
         }
     }
 
+    /**
+     * @return void
+     * @throws PrestaShopDatabaseException
+     */
     protected function runTasksCrons()
     {
         $query = 'SELECT * FROM ' . _DB_PREFIX_ . bqSQL($this->module->name) . ' WHERE `active` = 1 AND `id_module` IS NULL';
@@ -93,6 +107,10 @@ class AdminCronJobsController extends ModuleAdminController
         }
     }
 
+    /**
+     * @param array $cron
+     * @return bool
+     */
     protected function shouldBeExecuted($cron)
     {
         $hour = ($cron['hour'] == -1) ? date('H') : $cron['hour'];

@@ -237,6 +237,7 @@ class CronJobs extends Module
         $this->context->smarty->assign('form_infos', $this->_warnings);
         $this->context->smarty->assign('form_successes', $this->_successes);
 
+        $back_url='';
         if ((Tools::isSubmit('submitNewCronJob') || Tools::isSubmit('newcronjobs') || Tools::isSubmit('updatecronjobs')) &&
             ((isset($submit_cron) == false) || ($submit_cron === false))) {
             $back_url = $this->context->link->getAdminLink('AdminModules', false)

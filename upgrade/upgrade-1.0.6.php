@@ -21,6 +21,10 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
+/**
+ * @param Module $module
+ * @return Module
+ */
 function upgrade_module_1_0_6($module)
 {
     $table_name = _DB_PREFIX_ . bqSQL($module->name);

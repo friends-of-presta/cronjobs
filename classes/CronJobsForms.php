@@ -25,6 +25,10 @@ class CronJobsForms
 {
     protected static $module = false;
 
+    /**
+     * @param Module $module
+     * @return bool
+     */
     public static function init($module)
     {
         if (self::$module == false) {
@@ -34,6 +38,11 @@ class CronJobsForms
         return self::$module;
     }
 
+    /**
+     * @param string $title
+     * @param false $update
+     * @return array[]
+     */
     public static function getJobForm($title = 'New cron task', $update = false)
     {
         $form = [
@@ -150,6 +159,9 @@ class CronJobsForms
         return $form;
     }
 
+    /**
+     * @return array[]
+     */
     public static function getForm()
     {
         $form = [
@@ -182,6 +194,9 @@ class CronJobsForms
         return [$form];
     }
 
+    /**
+     * @return array[]
+     */
     public static function getFormValues()
     {
         $token = Configuration::get('CRONJOBS_EXECUTION_TOKEN', null, 0, 0);
@@ -211,6 +226,9 @@ class CronJobsForms
         ];
     }
 
+    /**
+     * @return array[]
+     */
     public static function getTasksList()
     {
         return [
@@ -226,6 +244,9 @@ class CronJobsForms
         ];
     }
 
+    /**
+     * @return array[]
+     */
     public static function getNewJobFormValues()
     {
         return [
@@ -238,6 +259,9 @@ class CronJobsForms
         ];
     }
 
+    /**
+     * @return array[]
+     */
     public static function getUpdateJobFormValues()
     {
         $id_shop = (int) Context::getContext()->shop->id;
@@ -267,6 +291,9 @@ class CronJobsForms
         ];
     }
 
+    /**
+     * @return array|bool
+     */
     public static function getTasksListValues()
     {
         $id_shop = (int) Context::getContext()->shop->id;
@@ -326,6 +353,9 @@ class CronJobsForms
         return $crons;
     }
 
+    /**
+     * @return array[]
+     */
     protected static function getHoursFormOptions()
     {
         $data = [['id' => '-1', 'name' => self::$module->l('Every hour', 'CronJobsForms')]];
@@ -337,6 +367,9 @@ class CronJobsForms
         return $data;
     }
 
+    /**
+     * @return array[]
+     */
     protected static function getDaysFormOptions()
     {
         $data = [['id' => '-1', 'name' => self::$module->l('Every day of the month', 'CronJobsForms')]];
@@ -348,6 +381,9 @@ class CronJobsForms
         return $data;
     }
 
+    /**
+     * @return array[]
+     */
     protected static function getMonthsFormOptions()
     {
         $data = [['id' => '-1', 'name' => self::$module->l('Every month', 'CronJobsForms')]];
@@ -359,6 +395,9 @@ class CronJobsForms
         return $data;
     }
 
+    /**
+     * @return array[]
+     */
     protected static function getDaysofWeekFormOptions()
     {
         $data = [['id' => '-1', 'name' => self::$module->l('Every day of the week', 'CronJobsForms')]];
