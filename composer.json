@@ -18,5 +18,10 @@
   "type": "prestashop-module",
   "require-dev": {
     "prestashop/php-dev-tools": "^4.1"
+  },
+  "scripts": {
+    "cs-fixer": [
+      "@php ./vendor/bin/php-cs-fixer fix"
+    ]
   }
 }
