@@ -23,15 +23,13 @@
  * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  *  International Registered Trademark & Property of PrestaShop SA
  */
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
 
 function upgrade_module_1_0_6($module)
 {
-    $table_name = _DB_PREFIX_.bqSQL($module->name);
-
+    $table_name = _DB_PREFIX_ . bqSQL($module->name);
 
     $look_for_columns = Db::getInstance()->ExecuteS(sprintf('SHOW COLUMNS FROM `%s` LIKE \'one_shot\'', $table_name));
 
