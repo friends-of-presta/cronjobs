@@ -167,24 +167,11 @@ class CronJobsForms
                 ),
                 'input' => array(
                     array(
-                        'type' => 'radio',
-                        'name' => 'cron_mode',
-                        'label' => self::$module->l('Cron mode', 'CronJobsForms'),
-                        'values' => array(
-                            array('id' => 'webservice', 'value' => 'webservice', 'label' => self::$module->l('Basic', 'CronJobsForms'),
-                                'p' => self::$module->l('Use the PrestaShop cron tasks webservice to execute your tasks.', 'CronJobsForms')),
-                            array('id' => 'advanced', 'value' => 'advanced', 'label' => self::$module->l('Advanced', 'CronJobsForms'),
-                                'p' => self::$module->l('For advanced users only: use your own crontab manager instead of PrestaShop cron tasks service.', 'CronJobsForms'))
-                        ),
+                        'type' => 'free', 'name' => 'advanced_help', 'col' => 9,
                     ),
                 ),
-                'submit' => array('title' => self::$module->l('Save', 'CronJobsForms'), 'type' => 'submit', 'class' => 'btn btn-default pull-right'),
             ),
         );
-
-        if (Configuration::get('CRONJOBS_MODE') == 'advanced') {
-            $form['form']['input'][] = array('type' => 'free', 'name' => 'advanced_help', 'col' => 9, 'offset' => 0);
-        }
 
         return array($form);
     }
@@ -203,7 +190,6 @@ class CronJobsForms
         }
 
         return array(
-            'cron_mode' => Configuration::get('CRONJOBS_MODE'),
             'advanced_help' =>
                 '<div class="alert alert-info">
                     <p>'
